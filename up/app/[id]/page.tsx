@@ -6,13 +6,13 @@ export const metadata = {
   description: 'Count up together!',
 };
 
-export default async function Home({ params }: { params: { id: string } }) {
-  const name = (await params).id;
+export default async function Page({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
 
   return (
     <main style={{ padding: 0 }}>
       <Suspense fallback={<div>Loading...</div>}>
-        <Client name={name} />
+        <Client name={id} />
       </Suspense>
     </main>
   );
