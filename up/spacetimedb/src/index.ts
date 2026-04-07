@@ -30,7 +30,7 @@ export const add = spacetimedb.reducer(
     if(channel) {
       ctx.db.channel.name.update( { name, count: channel.count + 1n } );
     } else {
-      ctx.db.channel.insert({ name, count: 0n });
+      ctx.db.channel.insert({ name, count: 1n });
     }
   }
 );
