@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
 import { Providers } from './providers';
 import './globals.css';
+import LiveStatus from '@/components/live';
 
 export const metadata: Metadata = {
-  title: 'SpacetimeDB Next.js App',
-  description: 'A Next.js app powered by SpacetimeDB',
+  title: 'CountMad',
+  description: 'A counting app powered by SpacetimeDB',
 };
 
 export default function RootLayout({

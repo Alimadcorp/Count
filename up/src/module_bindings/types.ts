@@ -13,6 +13,8 @@ import {
 export const Channel = __t.object("Channel", {
   name: __t.string(),
   count: __t.u256(),
+  created: __t.timestamp(),
+  last: __t.timestamp(),
 });
 export type Channel = __Infer<typeof Channel>;
 

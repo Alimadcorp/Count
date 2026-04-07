@@ -13,4 +13,6 @@ import {
 export default __t.row({
   name: __t.string().primaryKey(),
   count: __t.u256(),
+  created: __t.timestamp(),
+  last: __t.timestamp(),
 });

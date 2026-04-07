@@ -1,11 +1,16 @@
 import { Suspense } from 'react';
 import { Client } from './app';
 
+export const metadata = {
+  title: 'CountMad',
+  description: 'Count up together!',
+};
+
 export default async function Home({ params }: { params: { id: string } }) {
-    const name = (await params).id;
+  const name = (await params).id;
+
   return (
-    <main style={{ padding: '2rem', fontFamily: 'system-ui, sans-serif' }}>
-      <h1>SpacetimeDB Next.js App</h1>
+    <main style={{ padding: 0 }}>
       <Suspense fallback={<div>Loading...</div>}>
         <Client name={name} />
       </Suspense>

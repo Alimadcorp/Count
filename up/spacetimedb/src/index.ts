@@ -1,3 +1,4 @@
+import { Timestamp } from 'spacetimedb';
 import { schema, table, t } from 'spacetimedb/server';
 
 const spacetimedb = schema({
@@ -6,6 +7,8 @@ const spacetimedb = schema({
     {
       name: t.string().unique().primaryKey(),
       count: t.u256().default(0n),
+      created: t.timestamp().default(Timestamp.now()),
+      last: t.timestamp().default(Timestamp.now()),
     }
   ),
 });
@@ -28,9 +31,9 @@ export const add = spacetimedb.reducer(
   (ctx, { name }) => {
     const channel = ctx.db.channel.name.find(name);
     if(channel) {
-      ctx.db.channel.name.update( { name, count: channel.count + 1n } );
+      ctx.db.channel.name.update( { name, count: channel.count + 1n, created: channel.created, last: Timestamp.now() } );
     } else {
-      ctx.db.channel.insert({ name, count: 1n });
+      ctx.db.channel.insert({ name, count: 1n, created: Timestamp.now(), last: Timestamp.now() });
     }
   }
 );
